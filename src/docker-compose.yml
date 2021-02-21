@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  team-registry:
+    build: .
+    volumes:
+      - .:/usr/docker/ACUPAYTest/src/app
+    ports:
+      - 5000:80 # Expose port to access requirements
