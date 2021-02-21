@@ -1,6 +1,6 @@
 FROM python:3
 
-WORKDIR /usr/docker/acupaytest/src/app
+WORKDIR /usr/acupay/src/app
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
