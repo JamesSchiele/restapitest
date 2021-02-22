@@ -3,7 +3,7 @@ import tempfile
 
 import pytest
 
-from flaskr import flaskr
+from flaskr import flaskr, request, jsonify
 
 
 @pytest.fixture # called by each individual test - simple interface for app to trigger test reqs
