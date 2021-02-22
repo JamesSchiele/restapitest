@@ -31,7 +31,9 @@ def test_empty_db(client): # "test" prefix indicates pytest module to run this a
     assert b'No team members here yet' in rv.data
 
 @app.route('/api/team/<string:name>')
-def test_correct_age_input():
+def test_correct_age_input(): # test age inputted by post request of user by checking years difference between birthday and today
+    rv = client.get('/')
+    
     json_data = request.get_json()
     name = json_data['name']
     birthday = json_data['birthday']
@@ -42,4 +44,4 @@ def test_correct_age_input():
     difference_in_years = relativedelta(date.today(), start_date).years
 
     if (difference_in_years != age):
-        assert b'Invalid age inputted'
+        assert b'Invalid age inputted' in rv.data
