@@ -63,5 +63,18 @@ class TeammateList(Resource):
 
         return {'message': 'Team member added', 'data':args }, 201
 
+class TeamMember(Resource):
+    def get(self, name):
+        # receive 'name' as part of URL function here and pass through as a parameter
+        shelf = get_db()
+
+        # Return 404 error if key (name) does not exist in team members.
+        if not (name in shelf):
+            return {'message': 'Team member not found', 'data':{}}, 404
+
+        # If team member exists, return information
+
+        return {'message':'Team member exists in db', 'data': shelf[name]}, 200
     
 api.add_resource(TeammateList, '/team')
+api.add_resource(TeamMember, '/team/<string:name>')
