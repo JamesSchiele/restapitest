@@ -13,7 +13,7 @@ All responses will have the form
 
 Subsequent response definitions will only detail the excepted value of the 'data field'
 
-### List name, date of birthday, age and favourite animal of team
+### List name, date of birthday, age and favourite_animal of team
 
 **Definitions**
 
@@ -29,7 +29,7 @@ Subsequent response definitions will only detail the excepted value of the 'data
 		"name": "John Parker"
 		"birthday": "21st February 1981"
 		"age": "41"
-		"favourite animal": "axolotl"
+		"favourite_animal": "axolotl"
 	}
 ]
 ,,,
@@ -45,7 +45,7 @@ Subsequent response definitions will only detail the excepted value of the 'data
 - '"name":string' the full name of the team member
 - '"birthday":string' the birth date of the team member
 - '"age":int' the number of years since the birth date of the team member
-- '"favourite animal:string' the favourite animal of the team member
+- '"favourite_animal:string' the favourite_animal of the team member
 
 If a team member with the exact name already exists, the existing team member will be overwritten
 
@@ -58,6 +58,18 @@ If a team member with the exact name already exists, the existing team member wi
 		"name": "John Parker"
 		"birthday": "21st February 1981"
 		"age": "41"
-		"favourite animal": "axolotl"
+		"favourite_animal": "axolotl"
 	}
+'''
+
+## Look-up team member details
+
+'GET /team/<name>'
+
+**Response**
+
+-'404 Not Found' if the team member does not existing
+- '200 OK' on success
+
+'''json
 '''

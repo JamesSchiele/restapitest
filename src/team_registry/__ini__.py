@@ -3,7 +3,7 @@ import os
 import shelve
 
 # Import the framework
-from flask import Flask 
+from flask import Flask, g
 
 # Create an insance of Flask
 app = Flask(_name_)
@@ -46,3 +46,22 @@ class TeammateList(Resource):
             team.append(shelf[member]) # loop over all keys in team member list, put in array and append to team array
         
         return {'message':'Success', 'data': team} # wrap in data field to add message
+
+    def post(self):
+        parser = reqparse.RequestParser()
+
+        parser.add_argument('name', required = True)
+        parser.add_argument('birthday', required = True)
+        parser.add_argument('age', required = True)
+        parser.add_argument('favourite_animal', required = True)
+
+        # Parse arguments into an object
+        args = parser.parse_args()
+
+        shelf = get_db()
+        shelf[args['name']] = args # expected to be unique keys
+
+        return {'message': 'Team member added', 'data':args }, 201
+
+    
+api.add_resource(TeammateList, '/team')
