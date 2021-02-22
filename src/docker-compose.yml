@@ -4,6 +4,6 @@ services:
   team_registry:
     build: .
     volumes:
-      - .:/usr/acupay/src/app
+      - .:/usr/acupay/team_registry/src/app
     ports:
       - 5000:80 # Expose port to access requirements

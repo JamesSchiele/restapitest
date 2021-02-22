@@ -1,3 +1,3 @@
-from team_registry import app 
+from team_registry import app
 
-print("Hello")
+app.run(host='0.0.0.0', port=80, debug=True)
