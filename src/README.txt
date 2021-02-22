@@ -27,7 +27,7 @@ Subsequent response definitions will only detail the excepted value of the 'data
 [
 	{
 		"name": "John Parker"
-		"birthday": "21st February 1981"
+		"birthday": "21-02-81"
 		"age": "41"
 		"favourite_animal": "axolotl"
 	}
@@ -56,7 +56,7 @@ If a team member with the exact name already exists, the existing team member wi
 '''json
 	{
 		"name": "John Parker"
-		"birthday": "21st February 1981"
+		"birthday": "21-02-81"
 		"age": "41"
 		"favourite_animal": "axolotl"
 	}

@@ -1,10 +1,15 @@
 import os
 import tempfile
 
-import pytest
+import pytest, flask
+import datetime as date
 
 from flaskr import flaskr, request, jsonify
+from dateutil.relativedelta import relativedelta
 
+
+
+app = flask.Flask(_name_)
 
 @pytest.fixture # called by each individual test - simple interface for app to trigger test reqs
 def client():
@@ -25,3 +30,16 @@ def test_empty_db(client): # "test" prefix indicates pytest module to run this a
     rv = client.get('/')
     assert b'No team members here yet' in rv.data
 
+@app.route('/api/team/<string:name>')
+def test_correct_age_input():
+    json_data = request.get_json()
+    name = json_data['name']
+    birthday = json_data['birthday']
+    age = json_data['age']
+
+    date_object = datetime.strptime(birthday, "%d-%m-%y")
+
+    difference_in_years = relativedelta(date.today(), start_date).years
+
+    if (difference_in_years != age):
+        assert b'Invalid age inputted'
